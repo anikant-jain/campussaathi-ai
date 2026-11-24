@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build-server/
+.env
+.env.*
+!.env.example
+server/data/*.sqlite*
+server/data/db.json
+playwright-report/
+test-results/
+coverage/
+/output/
+/tmp/
+*.log
+

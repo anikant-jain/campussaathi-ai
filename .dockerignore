@@ -1,0 +1,11 @@
+node_modules
+dist
+build-server
+.env
+.env.*
+.git
+server/data/*.sqlite*
+server/data/db.json
+playwright-report
+test-results
+

@@ -1,0 +1,11 @@
+{
+  "name": "CampusSaathi AI",
+  "short_name": "CampusSaathi",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8f9fc",
+  "theme_color": "#30236e",
+  "icons": [{"src":"/campus-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]
+}
+

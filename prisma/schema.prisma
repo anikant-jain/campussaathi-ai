@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String          @id
+  email    String          @unique
+  data     String
+  sessions Session[]
+  resets   PasswordReset[]
+  @@map("accounts")
+}
+
+model Session {
+  token   String @id
+  userId  String @map("user_id")
+  expires BigInt
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, expires])
+  @@map("sessions")
+}
+
+model PasswordReset {
+  token   String @id
+  userId  String @map("user_id")
+  expires BigInt
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, expires])
+  @@map("resets")
+}
+
+model CampusRecord {
+  seq       BigInt @unique @default(autoincrement())
+  kind      String
+  id        String
+  owner     String?
+  data      String
+  embedding Unsupported("vector")?
+  @@id([kind, id])
+  @@index([kind, owner])
+  @@map("records")
+}
+
+model Asset {
+  id      String @id
+  content Bytes
+  @@map("assets")
+}
+
